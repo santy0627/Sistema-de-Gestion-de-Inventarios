@@ -8,7 +8,6 @@ class Money:
     currency: Currency
 
     def __post_init__(self):
-
         if self.amount < 0:
             raise ValueError("No puedes tener una cantidad negativa")
         
@@ -17,7 +16,6 @@ class Money:
         
 
     def _ensure_compatible(self, other:"Money"):
-
         if not isinstance(other, Money):
             raise TypeError("El valor no es compatible")
 
@@ -25,7 +23,6 @@ class Money:
             raise ValueError("No puedes operar con monedas distintas")
 
     def add(self, other: "Money") -> "Money":
-
         self._ensure_compatible(other)
         
         return  Money(
@@ -34,7 +31,6 @@ class Money:
         )
         
     def subtract(self, other: "Money") -> "Money":
-
         self._ensure_compatible(other)
 
         if self.amount - other.amount >= 0:
@@ -42,8 +38,7 @@ class Money:
         else:
             raise ValueError("No puedes quedar con un valor negativo")
         
-    def multiply(self, value: int) -> "Money":
-        
+    def multiply(self, value: int) -> "Money":   
         if value < 0:
             raise ValueError("No puedes multiplicar por un valor negativo")
 

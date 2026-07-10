@@ -1,0 +1,2 @@
+class ProductNotInInventoryError(Exception):
+    pass

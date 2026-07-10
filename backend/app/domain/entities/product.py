@@ -8,7 +8,7 @@ class Product:
     brand:str
     category:str
     suggested_price: Money
-    serial_contol:bool
+    serial_control:bool
     status:bool = True
 
     def __post_init__(self):
@@ -23,6 +23,15 @@ class Product:
         if not self.brand:
             raise ValueError(empty_field_error)
         
+
+    def __eq__(self, other):
+        if not isinstance(other, Product):
+            return NotImplemented
+        return self.sku == other.sku
+    
+    def __hash__(self):
+        return hash(self.sku)
+
     def _ensure_active(self) -> None:
         if not self.status:
             raise ValueError("No puedes hacer cambios de un objeto descontinuado")

@@ -22,3 +22,8 @@ class Inventory:
             item = self.search_product(product)
             newquantity = item.quantity.add(quantity)
             item.quantity = newquantity
+
+    def subtract_stock(self, product: Product, quantity: Quantity): 
+            item = self.search_product(product)
+            newquantity = item.quantity.subtract(quantity)
+            item.quantity = newquantity
